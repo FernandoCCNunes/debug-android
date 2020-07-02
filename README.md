@@ -2,7 +2,7 @@
 This is a small package to remove the boiler plate code for debugging an android application. 
 
 # Implementation
-####Gradle: 
+#### Gradle: 
 
     allprojects {
         repositories {
@@ -15,7 +15,7 @@ This is a small package to remove the boiler plate code for debugging an android
         implementation 'com.github.FernandoCCNunes:debug-android:1.0'
 	}
 
-####Maven: 
+#### Maven: 
     
     <repositories>
         <repository>
@@ -29,3 +29,17 @@ This is a small package to remove the boiler plate code for debugging an android
         <artifactId>debug-android</artifactId>
         <version>1.0</version>
     </dependency>
+    
+# Compatability: 
+
+- **Minimum SDK:** 14
+
+# Documentation: 
+
+# Author 
+Fernando Nunes
+
+# License
+None
+
+
