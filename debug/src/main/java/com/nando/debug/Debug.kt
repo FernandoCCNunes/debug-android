@@ -31,13 +31,13 @@ class Debug {
 
     fun warning() {
         if (canDisplayLog()) {
-            Log.e(getTag(), getMessage())
+            Log.w(getTag(), getMessage())
         }
     }
 
     fun information() {
         if (canDisplayLog()) {
-            Log.e(getTag(), getMessage())
+            Log.i(getTag(), getMessage())
         }
     }
 
@@ -49,7 +49,7 @@ class Debug {
 
     fun verbose() {
         if (canDisplayLog()) {
-            Log.e(getTag(), getMessage())
+            Log.v(getTag(), getMessage())
         }
     }
 
