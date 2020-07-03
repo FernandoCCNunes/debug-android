@@ -12,7 +12,7 @@ This is a small package to remove the boiler plate code for debugging an android
     }
     
     dependencies {
-        implementation 'com.github.FernandoCCNunes:debug-android:1.0'
+        implementation 'com.github.FernandoCCNunes:debug-android:1.1'
 	}
 
 #### Maven: 
@@ -57,7 +57,8 @@ This is a small package to remove the boiler plate code for debugging an android
             DebugManager.init(
                 DebuggerSettings.Builder(this, BuildConfig.DEBUG)
                     .setDefaultTag("DebugExample")
-                    .setUseSingleTag(bUseSingleTag = true, bDisplayCustomTags = false)
+                    .setUseSingleTag(true)
+                    .setDisplayCustomTags(true)
                     .build()
             )
         }
@@ -80,15 +81,46 @@ This is a small package to remove the boiler plate code for debugging an android
     
 # Extra Documentation
 
-| Class/Function | Params | Description | Default |
-| -------------- | ------ | ----------- | ---------------- |
-| DebugManager.init() | DebuggerSettings | Initializes the DebugManager with custom settings | N/A
-| DebuggerSettings() | Context, Boolean | Takes in a Context and a Boolean that handles whether to display or skip the logs | N/A
-| DebuggerSettings.Builder() | Context, Boolean | Same as the primary constructor, but allows for more configuration | N/A
-| DebuggerSettings.Builder().setDefaultTag()| String | The default tag to be used if **bUseSingleTag** is set to **true** or no tag is defined in the debug functions. | AppName  |
-| DebuggerSettings.Builder().setUseSingleTag()| Boolean | Whether to use only one tag for all the logs or allow for custom tags <br/> **true** = Only default tag is used <br/> **false** = Custom tags are used if defined, otherwise default tag is used | false
-| DebuggerSettings.Builder().setDisplayCustomTags()| Boolean | Whether to display or not the custom tags in the log message if **bUseSingleTag** is set to **true**. <br/> **true** = custom tags will be displayed in the message if **bUseSingleTag** is true <br/> **false** = custom tags will not be displayed in the message if **bUseSingleTag** is true | false
-| DebuggerSettings.Builder().build() | N/A | Returns an instance of **DebuggerSettings** with the configurations from the **Builder** | N/A
+### DebugManager:
+
+| Function | Params | Description |
+| -------- | ------ | ----------- |
+| init() | DebuggerSettings | This function initializes the DebugManager with a instance of **DebuggerSettings** to handle the behavior of the debug functionality.
+
+### DebuggerSettings:
+
+| Constructor | Description |
+| ----------- | ----------- |
+| (context: Context, bInDebugMode: Boolean) | Initializes an instance of **DebuggerSettings** with the context of your app and a variable to control whether the logs should be displayed or skipped <br/> **true** = Logs will be displayed <br/> **false** = Logs will not be displayed.
+
+### DebuggerSettings.Builder:
+
+| Constructor | Description |
+| ----------- | ----------- |
+| (context: Context, bInDebugMode: Boolean) | Initializes an instance of **DebuggerSettings** with the context of your app and a variable to control whether the logs should be displayed or skipped <br/> **true** = Logs will be displayed <br/> **false** = Logs will not be displayed.
+
+| Function | Params | Description | Default |
+| -------- | ------ | ----------- | ------- |
+| setDefaultTag() | String | Default value for the **tag**, this value will be used if no tags are defined when calling the **Debug** functions or if the property **bUseSingleTag** is set to **true** | property 'android:label' inside the Manifest file.
+| setUseSingleTag() | Boolean | Default value for the **bUseSingleTag**. <br/> **true -> tag** will be used in all logs. <br/> **false -> tag** will only be used if custom tags are not defined when calling the **Debug** functions | false.
+| setDisplayCustomTags() | Boolean | Default value for the **bDisplayCustomTags**. <br/> **true ->** custom tags defined in **Debug** functions will be displayed before the log message but not as the log's TAG if **bUseSingleTag** is set to **false**. <br/> **false ->** custom tags will never be displayed before the message if **bUseSingleTag** is set to **true** | true.
+| build() | NONE | Returns an instance of **DebuggerSettings** with with the property values from the **Builder** | N/A.
+
+### Debug:
+
+| Constructor | Description |
+| ----------- | ----------- |
+| (message: String) | The log will contain this message and it's TAG will be the default value of the property **tag** in the **DebuggerSettings**.
+| (tag: Any, message: String) | The log will contain this message and it's TAG will be the name of the class passed in by the **tag** parameter if **bUseSingleTag** is set to **false**.
+| (tag: String, message: String) | The log's message will be the value from the **message** parameter and it's TAG will be the value from the **tag** parameter if **bUseSingleTag** is set to **false**.
+
+| Function | Params | Description |
+| -------- | ------ | ----------- |
+| error() | NONE | Displays a log of type error.
+| warning() | NONE | Displays a log of type error.
+| information() | NONE | Displays a log of type information.
+| debug() | NONE | Displays a log of type debug.
+| verbose() | NONE | Displays a log of type verbose.
 
 # Author 
 - **Name:** Fernando Nunes
