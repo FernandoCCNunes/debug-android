@@ -12,7 +12,7 @@ This is a small package to remove the boiler plate code for debugging an android
     }
     
     dependencies {
-        implementation 'com.github.FernandoCCNunes:debug-android:1.1'
+        implementation 'com.github.FernandoCCNunes:debug-android:1.0.0'
 	}
 
 #### Maven: 
